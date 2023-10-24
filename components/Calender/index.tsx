@@ -57,14 +57,7 @@ const Calendar = () => {
   ]);
 
   const handleEventClick = (event: any) => {
-    // const task = window.prompt("Adicionar tarefa:");
-    // if (task) {
-    //   const newEvent = { ...event, title: `${event.title} - ${task}` };
-    //   setEvents([...events, newEvent]);
-    // }
-
-    // router.push(`/events/${event.id}`);
-    router.push(`/events`);
+    router.push(`/events/${event.id}`);
   };
 
   const eventStyleGetter = (event: any) => {
