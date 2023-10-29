@@ -280,12 +280,15 @@ const AccreditedPage = ({ params }: { params: { id: string } }) => {
                   Pet South America
                 </h3>
                 <div className="mb-4 flex items-center gap-3 ">
-                  <div className="h-14 w-14 rounded-md bg-white">
+                  <div className="h-14 w-14 rounded-md bg-white relative">
                     <Image
-                      src={"/images/user/user-03.png"}
-                      width={55}
-                      height={55}
+                      src={
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUZdrybHV3F79eAqX8lguAtd1W6Z037RAR7eDdxxi96nDBs490Dd5oH9EQAbC-Ubk5ad0&usqp=CAU"
+                      }
+                      layout="fill"
                       alt="User"
+                      className="rounded-md"
+                      objectFit="cover"
                     />
                   </div>
                   <div>
