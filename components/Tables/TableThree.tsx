@@ -1,26 +1,31 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { EventStatus, Package } from "@/types/package";
 
 const packageData: Package[] = [
   {
+    id: "1",
     name: "ABcasa fair 2023",
     invoiceDate: `Jan 13,2023`,
     promoter: "JA eventos",
     status: EventStatus.completed,
   },
   {
+    id: "2",
     name: "Pet South America",
     invoiceDate: `Jan 13,2023`,
     promoter: "JA eventos",
-
     status: EventStatus.completed,
   },
   {
+    id: "3",
     name: "Bienal do Livro",
     invoiceDate: `Jan 13,2023`,
     promoter: "Track",
     status: EventStatus.cancelled,
   },
   {
+    id: "4",
     name: "Vtex day 2023",
     invoiceDate: `Jan 13,2023`,
     promoter: "JA eventos",
@@ -29,6 +34,10 @@ const packageData: Package[] = [
 ];
 
 const TableThree = () => {
+  const router = useRouter();
+  const handleNavigation = (promoterId: string) => {
+    router.push(`/events/${promoterId}`);
+  };
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -85,7 +94,10 @@ const TableThree = () => {
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <div className="flex items-center space-x-3.5">
-                    <button className="hover:text-primary">
+                    <button
+                      onClick={() => handleNavigation(packageItem.id)}
+                      className="hover:text-primary"
+                    >
                       <svg
                         className="fill-current"
                         width="18"

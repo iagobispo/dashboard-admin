@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import TableEventAccredited from "@/components/Tables/TableEventAccredited";
+import TableEventPromoter from "@/components/Tables/TableEventPromoter";
 import { Metadata } from "next";
 import Link from "next/link";
 export const metadata: Metadata = {
@@ -7,11 +7,20 @@ export const metadata: Metadata = {
   description: "This is Tables page for TailAdmin Next.js",
 };
 
-const EventPage = ({ params }: { params: { id: string } }) => {
+const PromoterPage = ({ params }: { params: { id: string } }) => {
+  const promoter = {
+    name: "Pet South America",
+    phone: "(11) 4744-0000",
+    email: "pet@contato.com.br",
+    cnpj: "00.000.000/0000-00",
+    city: "São Paulo",
+    observation:
+      "Este evento é muito importante para nossa empresa. Por favor, adicione qualquer observação relevante que você gostaria de compartilhar conosco. Observações são opcionais e podem incluir informações adicionais sobre o evento, requisitos especiais ou qualquer outra informação que você ache relevante.",
+  };
   return (
     <>
       <p>ID: {params.id}</p>
-      <Breadcrumb pageName="Evento" />
+      <Breadcrumb pageName="Promotora" />
 
       <div className="grid grid-cols-1 gap-9 lg:grid-cols-2">
         <div className="flex flex-col gap-9">
@@ -19,7 +28,7 @@ const EventPage = ({ params }: { params: { id: string } }) => {
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
-                Pet South America
+                Track eventos
               </h3>
             </div>
             <form action="#">
@@ -32,21 +41,21 @@ const EventPage = ({ params }: { params: { id: string } }) => {
                     <input
                       type="text"
                       disabled
-                      placeholder="Nome do evento"
-                      value={"Pet South America"}
+                      placeholder="Nome da promotora"
+                      value={promoter.name}
                       className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
                   </div>
 
                   <div className="w-full xl:w-1/2">
                     <label className="mb-2.5 block text-black dark:text-white">
-                      Status
+                      Contato
                     </label>
                     <input
                       type="text"
                       disabled
-                      value={""}
-                      placeholder="Concluido"
+                      value={promoter.phone}
+                      placeholder="(11) 4744-0000"
                       className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
                   </div>
@@ -54,12 +63,12 @@ const EventPage = ({ params }: { params: { id: string } }) => {
 
                 <div className="mb-4.5">
                   <label className="mb-2.5 block text-black dark:text-white">
-                    Promotora
+                    Email
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     disabled
-                    value={"Track eventos"}
+                    value={promoter.email}
                     placeholder="promotora@contato.com.br"
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   />
@@ -67,41 +76,15 @@ const EventPage = ({ params }: { params: { id: string } }) => {
 
                 <div className="mb-4.5">
                   <label className="mb-2.5 block text-black dark:text-white">
-                    CNAE
+                    CNPJ
                   </label>
                   <input
                     type="text"
                     disabled
-                    value={"3250706, 3250709"}
+                    value={promoter.cnpj}
                     placeholder="00.000.000/0000-00"
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   />
-                </div>
-
-                <div className="mb-4.5 flex-1 flex flex-col gap-6 xl:flex-row">
-                  <div className="flex-1">
-                    <label className="mb-3 block text-black dark:text-white">
-                      Data início
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="date"
-                        className="custom-input-date custom-input-date-2 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex-1">
-                    <label className="mb-3 block text-black dark:text-white">
-                      Data fim
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="date"
-                        className="custom-input-date custom-input-date-2 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                      />
-                    </div>
-                  </div>
                 </div>
 
                 <div className="mb-4.5">
@@ -112,7 +95,7 @@ const EventPage = ({ params }: { params: { id: string } }) => {
                     <input
                       type="text"
                       disabled
-                      value={""}
+                      value={promoter.city}
                       placeholder="São Paulo"
                       className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
@@ -151,7 +134,7 @@ const EventPage = ({ params }: { params: { id: string } }) => {
                   <textarea
                     disabled
                     rows={6}
-                    value={""}
+                    value={promoter.observation}
                     placeholder="Adicione uma observação (opcional)"
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                   ></textarea>
@@ -166,30 +149,16 @@ const EventPage = ({ params }: { params: { id: string } }) => {
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark row flex items-center justify-between">
               <h3 className="font-medium text-black dark:text-white">
-                Credenciados
+                Eventos
               </h3>
-              <div className="flex row items-center">
-                <svg
-                  width="22"
-                  height="15"
-                  viewBox="0 0 22 15"
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3.66667 8.55556H18.3333V6.11111H3.66667M0 0V2.44444H22V0M8.55556 14.6667H13.4444V12.2222H8.55556V14.6667Z"
-                    className="fill-current"
-                  />
-                </svg>
-                <Link
-                  href="#"
-                  className=" ml-5 inline-flex items-center justify-center rounded-md bg-meta-3 py-2 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-6 xl:px-8"
-                >
-                  + Adicionar
-                </Link>
-              </div>
+              <Link
+                href="#"
+                className="inline-flex items-center justify-center rounded-md bg-meta-3 py-2 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-6 xl:px-8"
+              >
+                + Adicionar
+              </Link>
             </div>
-            <TableEventAccredited />
+            <TableEventPromoter />
           </div>
         </div>
       </div>
@@ -197,4 +166,4 @@ const EventPage = ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default EventPage;
+export default PromoterPage;

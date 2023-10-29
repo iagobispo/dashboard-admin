@@ -1,6 +1,8 @@
-import { EventStatus, Package } from "@/types/package";
-
+"use client";
+import { useRouter } from "next/navigation";
+import { EventStatus } from "@/types/package";
 type Promoter = {
+  id: string;
   name: string;
   invoiceDate: string;
   status: EventStatus.completed;
@@ -8,11 +10,13 @@ type Promoter = {
 
 const packageData: Promoter[] = [
   {
+    id: "1",
     name: "Track",
     invoiceDate: `Jan 13,2023`,
     status: EventStatus.completed,
   },
   {
+    id: "2",
     name: "JA eventos",
     invoiceDate: `Jan 13,2023`,
     status: EventStatus.completed,
@@ -20,6 +24,10 @@ const packageData: Promoter[] = [
 ];
 
 const TablePromoter = () => {
+  const router = useRouter();
+  const handleNavigation = (promoterId: string) => {
+    router.push(`/promoter/${promoterId}`);
+  };
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -33,7 +41,7 @@ const TablePromoter = () => {
                 Data
               </th>
               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                Status
+                Email
               </th>
               <th className="py-4 px-4 font-medium text-black dark:text-white">
                 Ações
@@ -54,21 +62,16 @@ const TablePromoter = () => {
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                  <p
-                    className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ${
-                      packageItem.status === EventStatus.completed
-                        ? "text-success bg-success"
-                        : packageItem.status === EventStatus.cancelled
-                        ? "text-danger bg-danger"
-                        : "text-warning bg-warning"
-                    }`}
-                  >
-                    {packageItem.status}
+                  <p className="text-black dark:text-white">
+                    email@compania.com.br
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <div className="flex items-center space-x-3.5">
-                    <button className="hover:text-primary">
+                    <button
+                      onClick={() => handleNavigation(packageItem.id)}
+                      className="hover:text-primary"
+                    >
                       <svg
                         className="fill-current"
                         width="18"

@@ -1,8 +1,9 @@
 export type Package = {
+  id: string;
   name: string;
   invoiceDate: string;
   status: EventStatus;
-  promoter: string;
+  promoter?: string;
 };
 
 export const enum EventStatus {
